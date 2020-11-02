@@ -28,12 +28,12 @@ function romanNumEncoder(num){
         
     }
     for(var i = 0; i<output.length; i++){
-        console.log(output[i])
+
         
     }
-
+    console.log(output.length)
     return output;
 }
 
-var x = romanNumEncoder(1990);
+var x = romanNumEncoder(678);
 console.log(x);

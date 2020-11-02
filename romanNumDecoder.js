@@ -1,4 +1,5 @@
-var testStr="MCMXC"
+var testStr="MCDXLIV"
+
 function romanNumDecoder(str){
     var romanNumDict = {
         "M": 1000,
@@ -17,7 +18,6 @@ function romanNumDecoder(str){
     }
     var output = 0;
     for(var i = 0; i < str.length; i++){
-        console.log(romanNumDict[str[i+1]],romanNumDict[str[i]]);
         if(romanNumDict[str[i]] < romanNumDict[str[i+1]]){
             output += romanNumDict[str[i+1]] - romanNumDict[str[i]];
             i++
