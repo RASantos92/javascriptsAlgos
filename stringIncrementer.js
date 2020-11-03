@@ -4,9 +4,6 @@ function incrementString(str) {
     let numbers = "123456789"
     let number = "";
     let strOutput = "";
-    if(str[str.length-1] == 0){
-        
-    }
     for(var i = 0; i< str.length; i++){
         if(str[i] == 0){
             if(number.length = 0){
