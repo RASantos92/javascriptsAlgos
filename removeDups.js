@@ -15,23 +15,23 @@
 //     console.log(couter);
 // }
 
-// testSrt = "Snap! crackle! pop!";
+testSrt = "Snap! crackle! pop!";
 
-// function stringDedupe(str) {
-//     let newStr = "";
-//     dict = {};
-//     for (let i = str.length - 1; i >= 0; i--) {
-//         if (dict[str[i]]) {
-//             dict[str[i]]++;
-//             continue;
-//         }
-//         (dict[str[i]] = 1)
-//             console.log(dict);
-//             newStr = str[i] + newStr;
+function stringDedupe(str) {
+    let newStr = "";
+    dict = {};
+    for (let i = str.length - 1; i >= 0; i--) {
+        if (dict[str[i]]) {
+            dict[str[i]]++;
+            continue;
+        }
+        (dict[str[i]] = 1)
+            console.log(dict);
+            newStr = str[i] + newStr;
 
-//     }
-//     return newStr;
-// }
+    }
+    return newStr;
+}
 
 // x = stringDedupe(testSrt);
 // console.log(x);
