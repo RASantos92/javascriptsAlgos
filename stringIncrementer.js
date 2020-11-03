@@ -1,4 +1,4 @@
-const testStr="foobar999";
+const testStr="foobar0120";
 // should have used isNaN === is not a number
 function incrementString(str) {
     let numbers = "123456789"
