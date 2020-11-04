@@ -1,4 +1,4 @@
-const testStr = "SHOW ME THE MONEY"
+const testStr = "THIS IS PRETTY COOL LEMME TELL YA"
 
 function encodeMorse(str){
     var morseCodeDict = {

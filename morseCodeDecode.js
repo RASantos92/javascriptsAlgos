@@ -1,4 +1,4 @@
-const testStr = "... .... --- .--  -- .  - .... .  -- --- -. . -.--  "
+const testStr = "- .... .. ...  .. ...  .--. .-. . - - -.--  -.-. --- --- .-..  .-.. . -- -- .  - . .-.. .-..  -.-- .-"
 
 function decodeMorse(str) {
     var morseCodeDict = {
