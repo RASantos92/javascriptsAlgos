@@ -1,6 +1,7 @@
-const testBits = "111110011111"
+const testBits = "1100110011001100000011000000111111001100111111001111110000000000000011001111110011111100111111000000110011001111110000001111110011001100000011"
 
 var decodeBits = function (bits) {
+    console.log(bits)
     let output = "";
     let preOutput = {};
     for (var i = 0; i < bits.length; i++) {
@@ -15,10 +16,12 @@ var decodeBits = function (bits) {
         preOutput["s" + bits[i] + i] = counter;
         i += counter - 1;
     }
+
     var sumOf1 = 0;
     var sumOf0 = 0;
     var counter2 = 0;
     var counter3 = 0;
+
     for (var key in preOutput) {
         var value = preOutput[key];
         if (parseInt(key.slice(1, 2)) == 1) {
@@ -30,20 +33,36 @@ var decodeBits = function (bits) {
             sumOf0 += value;
         }
     }
+
     var averageOf1 = sumOf1 / counter2;
+    console.log(counter2)
     var averageOf0 = (sumOf0 / counter3) * 2;
-    console.log(counter3)
+    
     for (var key in preOutput) {
         var value = preOutput[key];
         if (parseInt(key.slice(1, 2)) == 1) {
-            if (value == 3) {
-                output += "-";
-            } else {
-                if (value > averageOf1) {
-                    output += "-"
-                } else {
+            if (averageOf1 != (sumOf0 / counter3)) {
+                if (value == 3 && counter2 == 1) {
+                    return output += "-";
+                } 
+                if (value == 1) {
+                    console.log("here")
                     output += "."
+                } 
+                if(value == 3){
+                    output += "-"
                 }
+                else {
+                    if (value > averageOf1 && counter3 > 1|| value == averageOf1) {
+                        output += "-"
+                    } 
+                    else {
+                        console.log("there")
+                        output += "."
+                    }
+                }
+            } else {
+                output += "."
             }
         }
         if (parseInt(key.slice(1, 2)) == 0) {
@@ -54,14 +73,17 @@ var decodeBits = function (bits) {
                         output += "  "
                     }
                     if (value <= averageOf0 && value >= 3 || value == (sumOf0 / counter3)) {
-                        console.log()
                         output += " "
                     }
+                }
+                if(averageOf1 != (sumOf0 / counter3) && counter3 == 1){
+                    console.log("here")
+                    output += " "
                 }
             }
         }
     }
-    console.log(preOutput);
+    // console.log(preOutput);
     return output;
 }
 console.log(decodeBits(testBits))
