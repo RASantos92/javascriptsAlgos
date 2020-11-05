@@ -1,42 +1,69 @@
-const testBits = "111"
+const testBits = "11111100111111"
 
 var decodeBits = function (bits) {
     let output = "";
     let preOutput = {};
     for (var i = 0; i < bits.length; i++) {
         var counter = 0;
-        for(var j = i; j< bits.length; j++){
-            if(parseInt(bits[i]) == parseInt(bits[j])){
+        for (var j = i; j < bits.length; j++) {
+            if (parseInt(bits[i]) == parseInt(bits[j])) {
                 counter++;
             } else {
                 break;
             }
         }
         preOutput["s" + bits[i] + i] = counter;
-        i += counter -1;
+        i += counter - 1;
     }
-    for(var key in preOutput){
+    var sumOf1 = 0;
+    var sumOf0 = 0;
+    var counter2 = 0;
+    var counter3 = 0;
+    for (var key in preOutput) {
         var value = preOutput[key];
-        if(parseInt(key.slice(1, 2)) == 1){
-            if(value >= 3){
-                output += "-"
-            } else {
-                output += "."
-            }
+        if (parseInt(key.slice(1, 2)) == 1) {
+            counter2++
+            sumOf1 += value;
         }
-        if(parseInt(key.slice(1, 2)) == 0){
-            if(value > 7){
-                output += "  "
-            } 
-            if(value < 7 && value >= 3) {
-                output += " "
-            }
+        if (parseInt(key.slice(1, 2)) == 0) {
+            counter3++
+            sumOf0 += value;
         }
-        console.log(key.slice(1,2))
     }
-    console.log(preOutput, preOutput[2])
+    var averageOf1 = sumOf1 / counter2;
+    var averageOf0 = (sumOf0 / counter3) * 2;
+    console.log(counter3)
+    for (var key in preOutput) {
+        var value = preOutput[key];
+        if (parseInt(key.slice(1, 2)) == 1) {
+            if (value == 3) {
+                output += "-";
+            } else {
+                if (value > averageOf1) {
+                    output += "-"
+                } else {
+                    output += "."
+                }
+            }
+
+        }
+        if (parseInt(key.slice(1, 2)) == 0) {
+            if (value != averageOf0) {
+                if (averageOf1 != (sumOf0 / counter3)) {
+                    if (value > averageOf0) {
+                        console.log(averageOf0)
+                        output += "  "
+                    }
+                    if (value <= averageOf0 && value >= 3 || value == (sumOf0 / counter3)) {
+                        output += " "
+                    }
+                }
+            }
+        }
+    }
     return output;
 }
+// console.log(decodeBits(testBits))
 
 function decodeMorse(str) {
     var morseCodeDict = {
