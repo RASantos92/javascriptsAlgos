@@ -21,3 +21,9 @@ function duplicateCount(str) {
 }
 
 console.log(duplicateCount(testStr))
+
+var testDict = {};
+testDict["s14"] = 20;
+testDict["s01"] = 3;
+testDict["s10"] = 20;
+console.log(testDict)

@@ -1,51 +1,43 @@
-const testBits = "10001"
+const testBits = "111"
 
-var decodeBits = function(bits){
+var decodeBits = function (bits) {
     let output = "";
-    if(parseInt(bits) == 111){
-        return output = "-"
-    }
-    for(var i = 0; i < bits.length; i++){
-        if(bits[i] == 1 && parseInt(bits[i]+bits[i+1]+bits[i+2]) != 111){
-            output += ".";
-            i += 3;
+    let preOutput = {};
+    for (var i = 0; i < bits.length; i++) {
+        var counter = 0;
+        for(var j = i; j< bits.length; j++){
+            if(parseInt(bits[i]) == parseInt(bits[j])){
+                counter++;
+            } else {
+                break;
+            }
         }
-        if(bits[i] == 1 && parseInt(bits.slice(i, i+8)) == 11111100){
-            output += "-";
-            i += 7
-
-        }
-        if(bits[i] == 0 && parseInt(bits[i+1]+bits[i+2]+bits[i+3]) == 0 && parseInt(bits[i+1]+bits[i+2]+bits[i+3]+bits[i+4]+bits[i+5]+bits[i+6]+bits[i+7])!= 0){
-            output += " ";
-            i += 3;
-        }
-        if(bits[i] == 0 && parseInt(bits[i+1]+bits[i+2]+bits[i+3]+bits[i+4]+bits[i+5]+bits[i+6]+bits[i+7]) == 0){
-            output += " ";
-            i += 7;
-        }
+        preOutput["s" + bits[i] + i] = counter;
+        i += counter -1;
     }
-    if(parseInt(bits[bits.length-1] + bits[bits.length-2]) == 11){
-        output += "."
+    for(var key in preOutput){
+        var value = preOutput[key];
+        if(parseInt(key.slice(1, 2)) == 1){
+            if(value >= 3){
+                output += "-"
+            } else {
+                output += "."
+            }
+        }
+        if(parseInt(key.slice(1, 2)) == 0){
+            if(value > 7){
+                output += "  "
+            } 
+            if(value < 7 && value >= 3) {
+                output += " "
+            }
+        }
+        console.log(key.slice(1,2))
     }
-    if(parseInt(bits.slice(bits.length - 9,bits.length -1)) == 11111100){
-        output += "-"
-    }
+    console.log(preOutput, preOutput[2])
     return output;
 }
-var decodeBits1 = function(bits){
-    let output = "";
-    let dict = {};
-    for(let i = 0; i < bits.length; i++){
-        if(dict[bits[i]]){
-            dict[bits[i]]++
-            continue;
-        }
-        (dict[bits[i]] = 1)
-    }
-    console.log(dict)
-    return output;
-}
-console.log(decodeBits1(testBits))
+
 function decodeMorse(str) {
     var morseCodeDict = {
         ".-": "A",
@@ -104,4 +96,3 @@ function decodeMorse(str) {
 var x = decodeBits(testBits);
 
 console.log(decodeMorse(x))
-
