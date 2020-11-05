@@ -1,4 +1,4 @@
-const testBits = "11111100111111"
+const testBits = "111110011111"
 
 var decodeBits = function (bits) {
     let output = "";
@@ -45,81 +45,82 @@ var decodeBits = function (bits) {
                     output += "."
                 }
             }
-
         }
         if (parseInt(key.slice(1, 2)) == 0) {
             if (value != averageOf0) {
-                if (averageOf1 != (sumOf0 / counter3)) {
+                if (averageOf1 != (sumOf0 / counter3) && counter3 > 1) {
                     if (value > averageOf0) {
                         console.log(averageOf0)
                         output += "  "
                     }
                     if (value <= averageOf0 && value >= 3 || value == (sumOf0 / counter3)) {
+                        console.log()
                         output += " "
                     }
                 }
             }
         }
     }
+    console.log(preOutput);
     return output;
 }
-// console.log(decodeBits(testBits))
+console.log(decodeBits(testBits))
 
-function decodeMorse(str) {
-    var morseCodeDict = {
-        ".-": "A",
-        "-...": "B",
-        "-.-.": "C",
-        "-..": "D",
-        ".": "E",
-        "..-.": "F",
-        "--.": "G",
-        "....": "H",
-        "..": "I",
-        ".---": "J",
-        "-.-": "K",
-        ".-..": "L",
-        "--": "M",
-        "-.": "N",
-        "---": "O",
-        ".--.": "P",
-        "--.-": "Q",
-        ".-.": "R",
-        "...": "S",
-        "-": "T",
-        "..-": "U",
-        "...-": "V",
-        ".--": "W",
-        "-..-": "X",
-        "-.--": "Y",
-        "--..": "Z",
-        ".----": "1",
-        "..---": "2",
-        "...--": "3",
-        "....-": "4",
-        ".....": "5",
-        "-....": "6",
-        "--...": "7",
-        "---..": "8",
-        "----.": "9",
-        "-----": "0",
-        "...---...": "SOS"
-    }
-    var words = (str).split("  ");
-    var letters = words.map((w) => w.split(" "))
-    var decoded = [];
+// function decodeMorse(str) {
+//     var morseCodeDict = {
+//         ".-": "A",
+//         "-...": "B",
+//         "-.-.": "C",
+//         "-..": "D",
+//         ".": "E",
+//         "..-.": "F",
+//         "--.": "G",
+//         "....": "H",
+//         "..": "I",
+//         ".---": "J",
+//         "-.-": "K",
+//         ".-..": "L",
+//         "--": "M",
+//         "-.": "N",
+//         "---": "O",
+//         ".--.": "P",
+//         "--.-": "Q",
+//         ".-.": "R",
+//         "...": "S",
+//         "-": "T",
+//         "..-": "U",
+//         "...-": "V",
+//         ".--": "W",
+//         "-..-": "X",
+//         "-.--": "Y",
+//         "--..": "Z",
+//         ".----": "1",
+//         "..---": "2",
+//         "...--": "3",
+//         "....-": "4",
+//         ".....": "5",
+//         "-....": "6",
+//         "--...": "7",
+//         "---..": "8",
+//         "----.": "9",
+//         "-----": "0",
+//         "...---...": "SOS"
+//     }
+//     var words = (str).split("  ");
+//     var letters = words.map((w) => w.split(" "))
+//     var decoded = [];
 
-    for (var i = 0; i < letters.length; i++) {
-        decoded[i] = [];
-        for (var j = 0; j < letters[i].length; j++) {
-            if (morseCodeDict[letters[i][j]]) {
-                decoded[i].push(morseCodeDict[letters[i][j]]);
-            }
-        }
-    }
-    return decoded.map(arr => arr.join("")).join(' ');
-}
+//     for (var i = 0; i < letters.length; i++) {
+//         decoded[i] = [];
+//         for (var j = 0; j < letters[i].length; j++) {
+//             if (morseCodeDict[letters[i][j]]) {
+//                 decoded[i].push(morseCodeDict[letters[i][j]]);
+//             }
+//         }
+//     }
+//     return decoded.map(arr => arr.join("")).join(' ');
+// }
 
-var x = decodeBits(testBits);
+// var x = decodeBits(testBits);
 
-console.log(decodeMorse(x))
+// console.log(decodeMorse(x))
