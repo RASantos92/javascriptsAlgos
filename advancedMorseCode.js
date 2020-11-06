@@ -1,6 +1,6 @@
-const testBits = "11001111111001100011111110011111110011111110001111111001100110011000110001101111111001100011111110000000001100111111100110011000111111100111111100111111100011001100110011111110001100011001100110000000001111111001100110011000110001100111111100110011000110011111110011001100"
+const testBits = "110011001100011001100110011000111111100111111100111111100011001111111001111111000000000111111100111111100011000000000111111100011001100110011000110000000001111111001111111000111111100111111100111111100011111110011000110001111111001100111111100111111100"
 
-const testBits1 = "111111000000111111"
+const testBits1 = "11110011110011110001111001111001111001111000111111111111110011111111111111001111111111111100011110011111111111111001111111111111100000000011111111111111001111111111111100011110000000001111111111111100011110011110011110011110001100000000011111111111111001111111111111100011111111111111001111111111111100111111111111110001111111111111100111100"
 
 var decodeBits = function (bits) {
     console.log(bits)
@@ -51,7 +51,7 @@ var decodeBits = function (bits) {
                 }
                 else {
                     if (value > averageOf1 && counter3 > 1 && averageOf1 != (sumOf0 / counter3) || value == averageOf1 && averageOf1 != (sumOf0 / counter3)) {
-                        console.log(averageOf1 , (sumOf0 / counter3))
+                        // console.log(averageOf1 , (sumOf0 / counter3))
                         output += "-"
                     } 
                     else {
@@ -75,7 +75,9 @@ var decodeBits = function (bits) {
                 if(averageOf1 != (sumOf0 / counter3) && counter3 == 1){
                     output += " "
                 }
-                if(value >= (sumOf0 / counter3) && value <= (averageOf0 + 1) && value != (sumOf0/counter3)){
+                if(value >= ((sumOf0 / counter3)-(((sumOf0/counter3)/100)*6)) && value <= (averageOf0 + 1) && value != (sumOf0/counter3)){
+                    console.log(value, ((sumOf0 / counter3)-(((sumOf0/counter3)/100)*6)) )
+                    // figure out how to subtract by a percentage to refine the thresholds even more this should be subtraced by 26%.
                     output += " "
                 }
                 if(value > (averageOf0 + 1)){
@@ -144,6 +146,6 @@ function decodeMorse(str) {
     return decoded.map(arr => arr.join("")).join(' ');
 }
 
-var x = decodeBits(testBits1);
+var x = decodeBits(testBits);
 
 console.log(decodeMorse(x))
