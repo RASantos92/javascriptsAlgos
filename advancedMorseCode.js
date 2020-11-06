@@ -1,5 +1,7 @@
 const testBits = "11001111111001100011111110011111110011111110001111111001100110011000110001101111111001100011111110000000001100111111100110011000111111100111111100111111100011001100110011111110001100011001100110000000001111111001100110011000110001100111111100110011000110011111110011001100"
 
+const testBits1 = "111111000000111111"
+
 var decodeBits = function (bits) {
     console.log(bits)
     let output = "";
@@ -48,7 +50,8 @@ var decodeBits = function (bits) {
                     output += "-"
                 }
                 else {
-                    if (value > averageOf1 && counter3 > 1|| value == averageOf1) {
+                    if (value > averageOf1 && counter3 > 1 && averageOf1 != (sumOf0 / counter3) || value == averageOf1 && averageOf1 != (sumOf0 / counter3)) {
+                        console.log(averageOf1 , (sumOf0 / counter3))
                         output += "-"
                     } 
                     else {
@@ -60,25 +63,19 @@ var decodeBits = function (bits) {
             }
         }
         if (parseInt(key.slice(1, 2)) == 0) {
-            if (value != averageOf0) {
+            if (value != averageOf0 && counter3 > 1) {
                 if (averageOf1 != (sumOf0 / counter3) && counter3 > 1) {
                     if (value > (averageOf0) + 2 && value > counter3) {
-                        console.log(value,averageOf0,counter3)
-                        console.log("right here")
                         output += "  "
                     }
                     if (value <= averageOf0 && value >= ((sumOf0 /counter3)+1)) {
-                        console.log("testValue" ,value, ((sumOf0 /counter3)+.5))
-                        // console.log("avg of 0: ", averageOf0, "compair value: ",(sumOf0 /counter3)+.5)
                         output += " "
                     }
                 }
                 if(averageOf1 != (sumOf0 / counter3) && counter3 == 1){
-                    console.log("here",value)
                     output += " "
                 }
                 if(value >= (sumOf0 / counter3) && value <= (averageOf0 + 1) && value != (sumOf0/counter3)){
-                    console.log("here", value, "(sumOf0 / counter3) =", (sumOf0 / counter3), "averageof 0 = ", averageOf0," == ")
                     output += " "
                 }
                 if(value > (averageOf0 + 1)){
@@ -88,11 +85,10 @@ var decodeBits = function (bits) {
             }
         }
     }
-    // console.log(averageOf0,(sumOf0 / counter3))
-    // console.log(preOutput);
+    console.log(output)
     return output;
 }
-console.log(decodeBits(testBits))
+// console.log(decodeBits(testBits))
 
 function decodeMorse(str) {
     var morseCodeDict = {
@@ -148,6 +144,6 @@ function decodeMorse(str) {
     return decoded.map(arr => arr.join("")).join(' ');
 }
 
-var x = decodeBits(testBits);
+var x = decodeBits(testBits1);
 
 console.log(decodeMorse(x))

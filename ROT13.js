@@ -1,4 +1,4 @@
-const testStr = "n"
+const testStr = "show me the money"
 
 function rot13(str) {
     let alpha = "aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ";
