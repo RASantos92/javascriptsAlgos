@@ -42,7 +42,7 @@ var decodeBits = function (bits) {
             if (averageOf1 != (sumOf0 / counter3)) {
                 if (value == 3 && counter2 == 1) {
                     return output += "-";
-                } 
+                }
                 if (value == 1) {
                     output += "."
                 } 
