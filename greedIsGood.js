@@ -7,15 +7,34 @@ function score( dice ) {
     for(var i = 0; i <= 4; i++){
         output.push(dice[getRandomNumber(0,5)])
     }
-    for(var j = output.length - 1; i >= 0; i--){
+    for(var j = output.length - 1; j >= 0; j--){
         if (dict[output[j]]){
             dict[output[j]]++;
             continue;
         }
         (dict[output[j]] = 1)
-            console.log(dict);
+    }
+    console.log(dict);
+    let score = 0;
+    for(var key in dict){
+        var value = dict[key];
+        console.log(value,key);
+        if(value == 3 && key != 1){
+            score += key*100;
+        }
+        if(value == 3 && key == 1){
+            score += key*1000;
+        }
+        if(value == 1){
+            if(key == 1){
+                score += key*100;
+            }
+            if(key == 5){
+                score += key*10;
+            }
+        }
     }
     console.log(output)
-    return null;
+    return score;
 }
 console.log(score(dice))
