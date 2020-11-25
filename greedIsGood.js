@@ -14,11 +14,9 @@ function score( dice ) {
         }
         (dict[output[j]] = 1)
     }
-    console.log(dict);
     let score = 0;
     for(var key in dict){
         var value = dict[key];
-        console.log(value,key);
         if(value == 3 && key != 1){
             score += key*100;
         }
