@@ -148,5 +148,6 @@ function decodeMorse(str) {
 var x = decodeBits(testBits);
 var y = decodeBits(testBits1);
 
-console.log(decodeMorse(x))
-console.log(decodeMorse(y))
+
+console.log("perfect morse code ", decodeMorse(x))
+console.log("trainer morse code ", decodeMorse(y))
