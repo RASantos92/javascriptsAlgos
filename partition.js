@@ -149,3 +149,7 @@ console.log(index);
 //     let right = arr.slice(pivot);
 //     return quickSort(left).concat(quickSort(right));
 // }  
+
+var partition1 = (xs,p) => xs.reduce( (r,e) => ( p(e) ? r[0].push(e): r[1].push(e), r), [[],[]]);
+
+partition1([1,2,3,5,4,8,5,6,8], 4)

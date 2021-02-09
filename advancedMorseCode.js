@@ -1,13 +1,16 @@
-const testBits = "110011001100011001100110011000111111100111111100111111100011001111111001111111000000000111111100111111100011000000000111111100011001100110011000110000000001111111001111111000111111100111111100111111100011111110011000110001111111001100111111100111111100"
+const computerBits = "110011001100011001100110011000111111100111111100111111100011001111111001111111000000000111111100111111100011000000000111111100011001100110011000110000000001111111001111111000111111100111111100111111100011111110011000110001111111001100111111100111111100"
 
-const testBits1 = "111100111100111100001111001111001111001111000111111111111110011111111111111001111111111111100011111001111111111111100111111111111110000000001111111111111100111111111111110000111110000000001111111111111100001111001111001111001111000111100000000011111111111111001111111111111100011111111111111001111111111111100111111111111110001111111111111100111100"
+const trainerBits = "111100111100111100001111001111001111001111000111111111111110011111111111111001111111111111100011111001111111111111100111111111111110000000001111111111111100111111111111110000111110000000001111111111111100001111001111001111001111000111100000000011111111111111001111111111111100011111111111111001111111111111100111111111111110001111111111111100111100111"
 
-var decodeBits = function (bits) {
+const decodeBits = function (bits) {
     console.log(bits)
     let output = "";
     let preOutput = {};
+    // for loop through input to store information in a dictonary
     for (var i = 0; i < bits.length; i++) {
+        //counter to keep track of how many like characters in a section .
         var counter = 0;
+        // loop for incrementing counter
         for (var j = i; j < bits.length; j++) {
             if (parseInt(bits[i]) == parseInt(bits[j])) {
                 counter++;
@@ -18,6 +21,7 @@ var decodeBits = function (bits) {
         preOutput["s" + bits[i] + i] = counter;
         i += counter - 1;
     }
+    console.log(preOutput)
     var sumOf1 = 0;
     var sumOf0 = 0;
     var counter2 = 0;
@@ -62,6 +66,7 @@ var decodeBits = function (bits) {
                 output += "."
             }
         }
+
         if (parseInt(key.slice(1, 2)) == 0) {
             if (value != averageOf0 && counter3 > 1) {
                 if (averageOf1 != (sumOf0 / counter3) && counter3 > 1) {
@@ -145,9 +150,28 @@ function decodeMorse(str) {
     return decoded.map(arr => arr.join("")).join(' ');
 }
 
-var x = decodeBits(testBits);
-var y = decodeBits(testBits1);
+var x = decodeBits(computerBits);
+var y = decodeBits(trainerBits);
 
 
-console.log("perfect morse code ", decodeMorse(x))
-console.log("trainer morse code ", decodeMorse(y))
+console.log("perfect morse code ", decodeMorse(x))// output = show me the money
+console.log("trainer morse code ", decodeMorse(y))//output show me the money
+
+
+
+var testArr = [1,2,3,4]
+
+function negitiveToBig(arr,str){
+    var output = str;
+    for (var j = 0; j < arr.length; j++) {
+    if (arr[j]%2 == 0) {
+        output = "This is an even number" +" "+ arr[j]
+    }
+}
+return output;
+}
+
+console.log(negitiveToBig([1,4,5,6,7], "testString"))
+
+
+for(var i =0; i<Resp)

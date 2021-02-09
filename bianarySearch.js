@@ -1,25 +1,28 @@
-const testArr = [1, 2, 33, 44, 56, 78, 94];
 
 
 function binarySearch(arr, value) {
-    if (arr[arr.length / 2] == value) {
+    if (arr[(arr.length -1) / 2] == value) {
         console.log(arr[arr.length/2])
+        console.log("first if")
         return true;
     }
-    if (arr[arr.length / 2] > value) {
-        for (var i = arr[arr.length / 2]; i <= 0; i--) {
+    if (arr[(arr.length -1) / 2] > value) {
+        for (var i = (arr.length -1) / 2; i <= 0; i--) {
+            console.log("second if")
             if (arr[i] == value) {
                 return true;
             }
         }
     }
-    if (arr[arr.length / 2] < value) {
-        for (var i = arr[arr.length / 2]; i < arr.length; i++) {
+    if (arr[(arr.length -1) / 2] < value) {
+        for (var i = (arr.length -1) / 2; i < arr.length; i++) {
+            console.log("third if")
             if (arr[i] == value) {
                 return true;
             }
         }
     }
+    console.log("where am i", arr[(arr.length -1) / 2], value)
 }
 x = binarySearch(testArr, 56);
 console.log("first Test",x);
@@ -64,6 +67,7 @@ console.log("second test",x1);
 
 
 function binarySearch(arr, val) {
+    console.log("bet you didnt know i was here")
     var sta = 0;
     var end = arr.length-1;
     while(sta < end) {
@@ -80,8 +84,31 @@ function binarySearch(arr, val) {
     if(arr[sta] === val) {
         return true;
     }
-
+    
     return false;
 }
 
-console.log(binarySearch([2, 3, 4, 6, 8, 10, 11, 12, 13, 15, 17, 21, 22], 5));
+console.log(binarySearch([2, 3, 4, 6, 8, 5, 11, 12, 13, 15, 17, 21, 22], 5));
+
+const testArr = [1, 2, 33, 44, 56, 78, 94];
+function binarySearchRecursive(input, target){
+    var center_index = Math.ceil((input.length/2)-1);
+    if (target == input[center_index]){
+        return true;
+    }
+    else if (target > input[center_index]){
+        console.log(input)
+        var newInput = input.slice(center_index+1);
+        console.log(newInput)
+        return binarySearchRecursive(newInput, target);
+    }
+    else if (target < input[center_index]){
+        console.log("Here",input)
+        var newInput = input.slice(0, center_index);
+        console.log(newInput)
+        return binarySearchRecursive(newInput, target);
+    }
+    return false;
+}
+
+console.log(binarySearchRecursive(testArr,56))
