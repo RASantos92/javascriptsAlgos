@@ -1,14 +1,11 @@
-
-
-function binarySearch(arr, value) {
+const testArr1 = [1, 2, 33, 44, 56, 78, 94];
+const testArr = [1, 2, 33, 44, 56, 78, 94];
+function binarySearchFirst(arr, value) {
     if (arr[(arr.length -1) / 2] == value) {
-        console.log(arr[arr.length/2])
-        console.log("first if")
         return true;
     }
     if (arr[(arr.length -1) / 2] > value) {
         for (var i = (arr.length -1) / 2; i <= 0; i--) {
-            console.log("second if")
             if (arr[i] == value) {
                 return true;
             }
@@ -16,22 +13,15 @@ function binarySearch(arr, value) {
     }
     if (arr[(arr.length -1) / 2] < value) {
         for (var i = (arr.length -1) / 2; i < arr.length; i++) {
-            console.log("third if")
             if (arr[i] == value) {
                 return true;
             }
         }
+        
     }
-    console.log("where am i", arr[(arr.length -1) / 2], value)
 }
-x = binarySearch(testArr, 56);
-console.log("first Test",x);
 
-
-const testArr1 = [1, 2, 33, 44, 56, 78, 94];
-
-
-function binarySearch1(arr, value) {
+function binarySearch2(arr, value) {
     var start = arr[0];
     var end = arr[arr.length - 1];
     let mid = Math.floor((start + end) / 2);
@@ -62,12 +52,8 @@ function binarySearch1(arr, value) {
         } 
     }
 }
-x1 = binarySearch1(testArr1,78);
-console.log("second test",x1);
 
-
-function binarySearch(arr, val) {
-    console.log("bet you didnt know i was here")
+function binarySearch3(arr, val) {
     var sta = 0;
     var end = arr.length-1;
     while(sta < end) {
@@ -88,9 +74,6 @@ function binarySearch(arr, val) {
     return false;
 }
 
-console.log(binarySearch([2, 3, 4, 6, 8, 5, 11, 12, 13, 15, 17, 21, 22], 5));
-
-const testArr = [1, 2, 33, 44, 56, 78, 94];
 function binarySearchRecursive(input, target){
     var center_index = Math.ceil((input.length/2)-1);
     if (target == input[center_index]){
@@ -111,4 +94,4 @@ function binarySearchRecursive(input, target){
     return false;
 }
 
-console.log(binarySearchRecursive(testArr,56))
+
