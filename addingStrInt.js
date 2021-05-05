@@ -9,3 +9,8 @@ function addBig(str1, str2){
     return finalOutput.toString()
 }
 console.log(addBig("111","222"))
+
+
+var inttest = 34;
+inttest += 5
+console.log(inttest)

@@ -80,15 +80,11 @@ function binarySearchRecursive(input, target){
         return true;
     }
     else if (target > input[center_index]){
-        console.log(input)
         var newInput = input.slice(center_index+1);
-        console.log(newInput)
         return binarySearchRecursive(newInput, target);
     }
     else if (target < input[center_index]){
-        console.log("Here",input)
         var newInput = input.slice(0, center_index);
-        console.log(newInput)
         return binarySearchRecursive(newInput, target);
     }
     return false;

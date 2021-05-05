@@ -1,9 +1,10 @@
+// 2 ones = . || 7 ones = - || 
+// 2 zeros = space between dots and dashes || 3 zeros = space between letters || 7 zeros = space between words
 const computerBits = "110011001100011001100110011000111111100111111100111111100011001111111001111111000000000111111100111111100011000000000111111100011001100110011000110000000001111111001111111000111111100111111100111111100011111110011000110001111111001100111111100111111100"
 
-const trainerBits = "111100111100111100001111001111001111001111000111111111111110011111111111111001111111111111100011111001111111111111100111111111111110000000001111111111111100111111111111110000111110000000001111111111111100001111001111001111001111000111100000000011111111111111001111111111111100011111111111111001111111111111100111111111111110001111111111111100111100111"
+const trainerBits = "111100111100111100001111001111001111001111000111111111111111100111111111111111001111111111111100011111001111111111111111001111111111111100000000011111111111111110011111111111111000011111000000000111111111111110000111100111100111100111100011110000000001111111111111100111111111111110001111111111111111001111111111111100111111111111110001111111111111100111"
 
 const decodeBits = function (bits) {
-    console.log(bits)
     let output = "";
     let preOutput = {};
     // for loop through input to store information in a dictonary
@@ -18,14 +19,20 @@ const decodeBits = function (bits) {
                 break;
             }
         }
+        //loading my bits in a dict 
         preOutput["s" + bits[i] + i] = counter;
+        //Incrementing i to skip over already counted bits.
+        //keeping big O down a bit
         i += counter - 1;
     }
+    // logging the dict after being populated
     console.log(preOutput)
+    //declaring variables keeping track of all the 1's and zeros.
     var sumOf1 = 0;
     var sumOf0 = 0;
     var counter2 = 0;
     var counter3 = 0;
+    // collecting data from my dict and storing them in my above variables
     for (var key in preOutput) {
         var value = preOutput[key];
         if (parseInt(key.slice(1, 2)) == 1) {
@@ -37,9 +44,10 @@ const decodeBits = function (bits) {
             sumOf0 += value;
         }
     }
+    // calculating the averages of the 1's and zeros
     var averageOf1 = sumOf1 / counter2;
     var averageOf0 = (sumOf0 / counter3) * 2;
-    
+    // looping through the dictionary that was created to populate the output
     for (var key in preOutput) {
         var value = preOutput[key];
         if (parseInt(key.slice(1, 2)) == 1) {
@@ -55,7 +63,7 @@ const decodeBits = function (bits) {
                 }
                 else {
                     if (value > averageOf1 && counter3 > 1 && averageOf1 != (sumOf0 / counter3) || value == averageOf1 && averageOf1 != (sumOf0 / counter3)) {
-                        // console.log(averageOf1 , (sumOf0 / counter3))
+                        console.log(averageOf1 , (sumOf0 / counter3))
                         output += "-"
                     } 
                     else {
@@ -94,7 +102,7 @@ const decodeBits = function (bits) {
     console.log(output)
     return output;
 }
-// console.log(decodeBits(testBits))
+console.log(decodeBits(testBits))
 
 function decodeMorse(str) {
     var morseCodeDict = {
@@ -150,28 +158,8 @@ function decodeMorse(str) {
     return decoded.map(arr => arr.join("")).join(' ');
 }
 
-var x = decodeBits(computerBits);
-var y = decodeBits(trainerBits);
+
+console.log("perfect morse code ", decodeMorse(decodeBits(computerBits)))// output = show me the money
+console.log("trainer morse code ", decodeMorse(decodeBits(trainerBits)))//output show me the money
 
 
-console.log("perfect morse code ", decodeMorse(x))// output = show me the money
-console.log("trainer morse code ", decodeMorse(y))//output show me the money
-
-
-
-var testArr = [1,2,3,4]
-
-function negitiveToBig(arr,str){
-    var output = str;
-    for (var j = 0; j < arr.length; j++) {
-    if (arr[j]%2 == 0) {
-        output = "This is an even number" +" "+ arr[j]
-    }
-}
-return output;
-}
-
-console.log(negitiveToBig([1,4,5,6,7], "testString"))
-
-
-for(var i =0; i<Resp)

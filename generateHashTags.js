@@ -9,4 +9,16 @@ function generateHashtag (str) {
     return output;
 }
 
-console.log(generateHashtag(testStr))
+// console.log(generateHashtag(testStr))
+
+function lol(str){
+    var words = (str).split(" ");
+    console.log(words);
+    var output = "";
+    for(var i = 0; i<words.length ; i++){
+        output +=  toUpperCase(words[i][0])
+    }
+    return output;
+}
+
+console.log(lol(testStr))

@@ -16,22 +16,13 @@ function romanNumEncoder(num){
         "I": 1
     }
     var output = "";
-    var counter=0;
-    console.log(num);
     for (var key in romanNumDict) {
         var value = romanNumDict[key];
         while(num - value >= 0){
             num = num - value;
             output += key;
-            counter++
         }
-        
     }
-    for(var i = 0; i<output.length; i++){
-
-        
-    }
-    console.log(output.length)
     return output;
 }
 
