@@ -15,3 +15,4 @@ function longestPalindromicSubstring(str) {
     }
     return longestPalindrome;
 }
+
