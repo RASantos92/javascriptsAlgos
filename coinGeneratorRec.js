@@ -1,4 +1,3 @@
-testPartial = {quarters}
 
 function generateCoinChange(
     cents,
