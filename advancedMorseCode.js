@@ -27,7 +27,7 @@ const decodeBits = function (bits) {
         i += counter - 1;
     }
     // logging the dict after being populated
-    console.log(preOutput)
+    // console.log(preOutput)
     //declaring variables keeping track of all the 1's and zeros.
     var sumOf1 = 0;
     var sumOf0 = 0;
@@ -64,7 +64,7 @@ const decodeBits = function (bits) {
                 }
                 else {
                     if (value > averageOf1 && counter3 > 1 && averageOf1 != (sumOf0 / counter3) || value == averageOf1 && averageOf1 != (sumOf0 / counter3)) {
-                        console.log(averageOf1 , (sumOf0 / counter3))
+                        // console.log(averageOf1 , (sumOf0 / counter3))
                         output += "-"
                     } 
                     else {
@@ -90,7 +90,7 @@ const decodeBits = function (bits) {
                     output += " "
                 }
                 if(value >= ((sumOf0 / counter3)-(((sumOf0/counter3)/100)*6)) && value <= (averageOf0 + 1) && value != (sumOf0/counter3)){
-                    console.log(value, ((sumOf0 / counter3)-(((sumOf0/counter3)/100)*6)) )
+                    // console.log(value, ((sumOf0 / counter3)-(((sumOf0/counter3)/100)*6)) )
                     output += " "
                 }
                 if(value > (averageOf0 + 1)){
@@ -100,10 +100,9 @@ const decodeBits = function (bits) {
             }
         }
     }
-    console.log(output)
+    // console.log(output)
     return output;
 }
-console.log(decodeBits(computerBits))
 
 function decodeMorse(str) {
     var morseCodeDict = {
@@ -159,7 +158,8 @@ function decodeMorse(str) {
     return decoded.map(arr => arr.join("")).join(' ');
 }
 
-
+console.log(decodeBits(computerBits))
+console.log(decodeBits(trainerBits))
 console.log("perfect morse code ", decodeMorse(decodeBits(computerBits)))// output = show me the money
 console.log("trainer morse code ", decodeMorse(decodeBits(trainerBits)))//output show me the money
 

@@ -11,6 +11,7 @@ class SinglyLinkedList {
     isEmpty() {
         return this.head === null;
     }
+
     insertAtBack(data) {
         const newBack = new Node(data);
         let runner = this.head;
@@ -24,6 +25,7 @@ class SinglyLinkedList {
         }
         return this;
     }
+
     moveMinToFront(){
         if(!this.head){
             console.log("this list is empty")
@@ -79,6 +81,7 @@ class SinglyLinkedList {
         this.head = this.head.next
         return this
     }
+
     removeBack(){
         let runner = this.head
         while(runner.next.next){
@@ -87,12 +90,14 @@ class SinglyLinkedList {
         runner.next = null
         return this
     }
+
     insertAtFront(data) {
         const newHead = new Node(data);
         newHead.next = this.head;
         this.head = newHead;
         return this;
     }
+
     contains(val) {
         let runner = this.head;
         while (runner) {
@@ -133,7 +138,7 @@ class SinglyLinkedList {
         }
         return this
     }
-    prependValue(eVal,newVal){
+    prependValue(eVal,newVal,front = true){
         const newNode = new Node(newVal);
         if(!this.head){
             this.head = newNode
@@ -144,13 +149,15 @@ class SinglyLinkedList {
             if(runner.next.value === eVal){
                 newNode.next = runner.next
                 runner.next = newNode
-                break
+                return this
             }
             runner = runner.next
         }
+        if(front) this.insertAtFront(newVal)
+        else this.insertAtBack(newVal)
         return this
     }
-    appendValue(eVal,newVal){
+    appendValue(eVal,newVal,back = true){
         const newNode = new Node(newVal);
         if(!this.head){
             this.head = newNode
@@ -161,13 +168,58 @@ class SinglyLinkedList {
             if(runner.value === eVal){
                 newNode.next = runner.next
                 runner.next = newNode
-                break
+                return this
             }
             runner = runner.next
+        }
+        if(back)this.insertAtBack(newVal)
+        else this.insertAtFront(newVal)
+        return this
+    }
+
+    removeSecondToLast(){
+        if(!this.head) return this
+        if(!this.head.next.next){
+            this.head = this.head.next
+            return this
+        }
+        let runner = this.head
+
+        while(runner.next.next.next){
+            runner = runner.next
+        }
+
+        let nodeToBeDestoryed = runner.next
+        runner.next = nodeToBeDestoryed.next
+        nodeToBeDestoryed.next = null
+        return this
+    }
+
+    // remove all nodes that have a negative value
+    removeNegatives(){
+        if(!this.head) return this
+        if(this.head.value < 0){
+            this.removeFront()
+        }
+        let runner = this.head
+        let nodeToBeDestoryed
+        while(runner.next){
+            if(runner.next.value < 0){
+                nodeToBeDestoryed = runner.next
+                runner.next = runner.next.next
+                nodeToBeDestoryed.next = null
+                continue
+            }
+            runner = runner.next
+        }
+        if(runner.value < 0){
+            this.removeBack()
         }
         return this
     }
 }
 
 var newList = new SinglyLinkedList();
-newList.insertAtFront(45).insertAtFront(54).insertAtFront(4).insertAtFront(5).appendValue(54,999).printSll()
+newList.insertAtFront(-45).insertAtFront(54).insertAtFront(4).insertAtFront(5).printSll().removeNegatives()
+console.log("+++++++++++++++++++++++++++++++")
+newList.printSll()
