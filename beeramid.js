@@ -14,9 +14,7 @@
 // beeramid(5000, 3); // should === 16
 function beeramid(referral,beerPrice){
     let pyramidLevels = 2
-    if(referral< beerPrice){
-        return pyramidLevels = 0
-    }
+    if(referral< beerPrice) return pyramidLevels = 0
     let beers = Math.floor(referral/beerPrice)-1
     while(beers >= 0){
         beers -= (pyramidLevels*pyramidLevels)
@@ -25,4 +23,4 @@ function beeramid(referral,beerPrice){
     }
     return pyramidLevels
 }
-console.log(beeramid(1,2))
+console.log(beeramid(1500,2))
