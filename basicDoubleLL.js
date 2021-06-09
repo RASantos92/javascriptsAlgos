@@ -15,18 +15,21 @@ class DoubleLinkedList{
         console.log("this list is empty")
         return this
     }
-    insertAtFront(data){
-        const newFront = new Node(data)
+    insertAtHead(data){
+        const newHead = new Node(data)
         let runner = this.head
         if(runner === null){
-            this.head = newFront
-            this.tail = newFront
+            this.head = newHead
+            this.tail = newHead
         }else{
-            this.head.previous = newFront
-            newFront.next = this.head
-            this.head = newFront
+            this.head.previous = newHead
+            newHead.next = this.head
+            this.head = newHead
         }
         return this
+    }
+    insertAtTail(data){
+        const
     }
     
 }

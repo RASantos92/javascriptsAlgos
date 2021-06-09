@@ -124,26 +124,18 @@ class SLQueue{
         let arr1 = []
         let arr2 = []
         while(runner){
-            if(count < Math.floor(this.size()/2)){
-                arr1.push(runner.value)
-            } else{
-                arr2.push(runner.value)
-            }
+            if(count < Math.floor(this.size()/2)) arr1.push(runner.value)
+            else arr2.push(runner.value)
             runner = runner.next
             count++
         }
         for(var i = 0; i < arr2.length; i++){
-            if(arr1[i] != undefined){
-                newList.enqueue(arr1[i])
-            }
+            if(arr1[i] != undefined) newList.enqueue(arr1[i])
             newList.enqueue(arr2[i])
         }
         console.log(arr1, arr2)
         return newList
-
     }
-
-
 }
 
 var newList = new SLQueue()
