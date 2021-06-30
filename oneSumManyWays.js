@@ -2,47 +2,56 @@
 // From wikipedia: https://en.wikipedia.org/wiki/Partition_(number_theory)#
 
 // In number theory and combinatorics, a partition of a positive integer n, also called an integer partition, is a way of writing n as a sum of positive integers. Two sums that differ only in the order of their summands are considered the same partition. If order matters, the sum becomes a composition. For example, 4 can be partitioned in five distinct ways:
+// ========================================================================
+// solution half baked
+// ========================================================================
 
-// function sum(num,subNum=0,count=0) {
-//     if(num === 0){
-//         console.log(num,subNum,count,"line 8")
-//         return count
-//     }
-//     if(subNum === 0){
-//         console.log(num,subNum,count,"line 11")
-//         num--
-//         subNum++
-//         count++
-//         console.log(num,subNum,count,"line 16")
-//         return sum(num,subNum,count)
-//     }
-//     if(subNum === 1){
-//         console.log(num,subNum,count,"line 20")
-//         num--
-//         subNum++
-//         count++
-//         console.log(num,subNum,count,"line 23")
-//         return sum(num,subNum,count)
-//     }
-//     if(subNum > 1){
-//         let tempFloor = Math.floor(subNum/2)
-//         let tempCeil = Math.ceil(subNum/2)
-//         if(num === 1 && tempCeil === 1){
-//             console.log(num,subNum,count,"line 30")
-//             return sum(0,tempCeil,count+=1)
-//         }
-//         if(tempFloor === 1 && tempCeil === 1){
-//             console.log(num,subNum,count,"line 34")
-//             count++
-//             console.log(num,subNum,count,"line 36")
-//             return sum(num, tempFloor,count)
-//         }
-//         if(tempCeil > 1){
-
-//         }
-//     }
-// }
-// console.log(sum(4))
+function sum(num,subNum=0,count=0) {
+    if(num === 0){
+        console.log(num,subNum,count,"line 8")
+        return count
+    }
+    if(subNum === 0){
+        console.log(num,subNum,count,"line 11")
+        num--
+        subNum++
+        count++
+        console.log(num,subNum,count,"line 16")
+        return sum(num,subNum,count)
+    }
+    if(subNum === 1){
+        console.log(num,subNum,count,"line 20")
+        num--
+        subNum++
+        count++
+        console.log(num,subNum,count,"line 23")
+        return sum(num,subNum,count)
+    }
+    if(subNum > 1){
+        let tempFloor = Math.floor(subNum/2)
+        let tempCeil = Math.ceil(subNum/2)
+        if(num === 1 && tempCeil === 1){
+            console.log(num,subNum,count,"line 30")
+            return sum(0,tempCeil,count+=1)
+        }
+        if(tempFloor === 1 && tempCeil === 1){
+            console.log(num,subNum,count,"line 34")
+            count++
+            console.log(num,subNum,count,"line 36")
+            return sum(num, tempFloor,count)
+        }
+        if(tempCeil > 1){
+            
+        }
+    }
+}
+console.log("*******testing 4*********")
+console.log(sum(4))
+console.log("*******testing 5*********")
+console.log(sum(5))
+// ========================================================================
+// attempt to visualize
+// ========================================================================
 function dictMap(num){
     var output = {}
     for(var i = 0; i < num; i++){
@@ -60,12 +69,12 @@ function dictMap(num){
     return output
 }
 
-
 function sum1(num,output={},count=0){
     if((Object.keys(output).length === 0)){
         var output = dictMap(num)
         count++
     }
+    console.log("Step one || creating a grid based on the number input", output)
     for (var key in output){
         let keyAfter = parseInt(key) + 1
         let shiftCount = 0
@@ -90,4 +99,3 @@ function sum1(num,output={},count=0){
     }
     return output
 }
-console.log(sum1(4))
