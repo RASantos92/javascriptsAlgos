@@ -19,3 +19,26 @@ function inOrderSubsets(str, solutions = [], partial = "") {
 }
 
 console.log(inOrderSubsets("abcd").join(", "));
+
+
+test = [1,2,3,4,5,6,7]
+
+
+function arrayRotate(arr, shiftBy) {
+  if (shiftBy > 0) {
+    while(shiftBy > 0){
+      arr.unshift(arr.pop());
+      shiftBy--;
+    }
+  }
+  else{
+    while(shiftBy < 0){
+      arr.push(arr.shift());
+      shiftBy++
+    }
+  } 
+  return arr;
+}
+
+arrayRotate(test,-3)
+console.log(test)

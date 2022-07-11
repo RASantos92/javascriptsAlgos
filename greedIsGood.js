@@ -32,7 +32,11 @@ function score( dice ) {
             }
         }
     }
-    console.log(output)
+    console.log(output,score)
     return score;
 }
-console.log(score(dice))
+var totalScore = 0
+for(var i = 0; i<5;i++){
+    totalScore += score(dice)
+}
+console.log(totalScore)

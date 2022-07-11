@@ -7,11 +7,15 @@
 // ========================================================================
 
 function sum(num,subNum=0,count=0) {
+    //End case for my recursive function
+    //decrementing the givin number down to 0
     if(num === 0){
         console.log(num,subNum,count,"line 8")
+        //count will keep track of how many steps are taken
         return count
     }
     if(subNum === 0){
+        //Step 1. decr. num by 1, give to our subNum, count increments keeping track of our steps.
         console.log(num,subNum,count,"line 11")
         num--
         subNum++

@@ -1,14 +1,15 @@
+function isPalindrome(str){
+    var rString = ""
+    for(var i = str.length-1; i>=0;i--) rString += str[i]
+    if(str === rString) return true
+    return false
+}
 function longestPalindromicSubstring(str) {
     let longestPalindrome = str[0];
-
-    // generate every sub string 1 at a time and check
-    // if it is a palindrome and if it is longer than
-    // the current longest
     for (let i = 0; i < str.length; i++) {
         for (let j = i + 1; j < str.length + 1; j++) {
-            let subStr = str.slice(i, j);
-
-            if (subStr.length > longestPalindrome.length && isPalindrome(subStr)) {
+            var subStr = str.slice(i,j)
+            if (subStr.length > longestPalindrome.length && isPalindrome(str.slice(i, j))) {
                 longestPalindrome = subStr;
             }
         }
@@ -16,3 +17,5 @@ function longestPalindromicSubstring(str) {
     return longestPalindrome;
 }
 
+var test = "i like to dirve the racecar extreamly fast"
+console.log(longestPalindromicSubstring(test))

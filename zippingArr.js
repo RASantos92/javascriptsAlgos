@@ -1,18 +1,11 @@
 function zipArr(arr1,arr2){
     var newArr = [];
-    var useArr = [];
-    var sideArr = [];
-    if(arr1.length > arr2.length){
-        useArr = arr1;
-        sideArr = arr2
-    } else {
-        useArr = arr2;
-        sideArr = arr1
-    }
-    for(var i = 0; i< useArr.length; i++){
-        newArr.push(useArr[i]);
-        if(sideArr[i] != undefined)
-            newArr.push(sideArr[i]);
+    var largerArr, sideArr;
+    if(arr1.length > arr2.length) largerArr = arr1, sideArr = arr2
+    else largerArr = arr2, sideArr = arr1
+    for(var i = 0; i< largerArr.length; i++){
+        if(arr1[i]) newArr.push(arr1[i]);
+        if(arr2[i]) newArr.push(arr2[i])
     }
     return newArr
 }

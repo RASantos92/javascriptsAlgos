@@ -143,3 +143,11 @@ newList.enqueue(1).enqueue(2).enqueue(3).enqueue(4).enqueue(5).enqueue(6).printL
 console.log("*******************************")
 var newSll = newList.interleaveQueue()
 newSll.printList()
+
+
+function fibonacci(num) {
+    if (num <= 1) return 1;
+  
+    return fibonacci(num - 1) + fibonacci(num - 2);
+  }
+  console.log(fibonacci(7))

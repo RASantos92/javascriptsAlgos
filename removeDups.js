@@ -1,20 +1,3 @@
-// function removeDups(str) {
-//     var newStr = "";
-//     var couter = 0;
-//     for (var i = 0; i < str.length; i++) {
-//         for (var j=1 ; j < str.length; j++) {
-//             if (str[i] == str[j]) {
-//                 console.log(str[i], str[j]);
-//                 couter += 1;
-//             }
-//             else if ( couter == 0){
-//                 newStr += str[i];
-//             }
-//         }
-//     }
-//     console.log(couter);
-// }
-
 testSrt = "Snap! crackle! pop!";
 
 function stringDedupe(str) {
@@ -33,8 +16,8 @@ function stringDedupe(str) {
     return newStr;
 }
 
-// x = stringDedupe(testSrt);
-// console.log(x);
+x = stringDedupe(testSrt);
+console.log(x);
 
 testSrt = "din";
 var testStr = "Success";
@@ -74,3 +57,21 @@ function stringDedupe(str) {
 
 x = stringDedupe(testStr);
 console.log("x =", x);
+
+
+
+
+
+
+
+
+function arrDupe(arr) {
+    let dict = {}
+    for (let i = 0; i < arr.length; i++) {
+        if (!dict[arr[i]]) dict[arr[i]] = 1
+        else arr.splice(i,1),i--
+    }
+    Object.keys(dict)
+    return arr;
+}
+console.log(arrDupe([1,3,4,8,10,2,4,5,5,6,6,6,2,4,1]))

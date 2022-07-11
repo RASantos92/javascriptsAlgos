@@ -41,30 +41,32 @@ function merge(left, right) {
 var index = partition(testArr, 0);
 console.log(index);
 
-//shawns example
-// let pivotVal = arr[start];
-// index = start;
-// for (let i = start + 1; i < arr.length; i++)
-//     if (pivotVal > arr[i]) {
-//         [arr[index], arr[i]] = [arr[i], arr[index]];
-//         index++;
-//     }
-// return start;
-// }
 
-// function quicksort(arr, left = 0, right = arr.length - 1) {
-// if (left < right) {
-//     let pivot = partition(arr, left, right);
-//     //left
-//     quicksort(arr, left, pivot - 1);
-//     //right
+function sortIt(arr, start = arr[0]){
+let pivotVal = arr[start];
+index = start;
+    for (let i = start + 1; i < arr.length; i++){
+        if (pivotVal > arr[i]) {
+            [arr[index], arr[i]] = [arr[i], arr[index]];
+            index++;
+        }
+    return arr;
+    }
+}
 
-//     quicksort(arr, pivot + 1, right);
-// }
-// return arr;
-// }
+function quicksort(arr, left = 0, right = arr.length - 1) {
+    if (left < right) {
+        let pivot = sortIt(arr, left, right);
+        //left
+        quicksort(arr, left, pivot - 1);
+        //right
+        
+        quicksort(arr, pivot + 1, right);
+    }
+    return arr;
+}
+console.log(quicksort([2, 1, 5, 7, 4, 8, 9, 6, 10, 13, 15]));
 
-// console.log(quicksort([2, 1, 5, 7, 4, 8, 9, 6, 10, 13, 15]));
 
 
 //pikes example
@@ -111,26 +113,26 @@ console.log(index);
 // var sortedArray = quickSort(items, 0, items.length - 1);
 // console.log(sortedArray); //prints [2,3,5,6,7,9]`
 
-// const partitionArray = (arr) => {
-//     let i=-1
-//     const pivot = arr[arr.length -1];
-//     for(let j=0; j<=arr.length; j++){
-//     if(arr[j]<=pivot){
-//     i++
-//     [arr[j], arr[i]] = [arr[i], arr[j]]
-//     }
-//     }
-//     return i;
-//     }
+const partitionArray = (arr) => {
+    let i=-1
+    const pivot = arr[arr.length -1];
+    for(let j=0; j<=arr.length; j++){
+    if(arr[j]<=pivot){
+    i++
+    [arr[j], arr[i]] = [arr[i], arr[j]]
+    }
+    }
+    return i;
+    }
     
-//     const quickSort = (arr) => {
-//     let arrCopy = […arr]
-//     if(arrCopy.length > 1){
-//     let pi = partitionArray(arrCopy);
-//     arrCopy = […quickSort(arrCopy.slice(0, pi)), arrCopy[pi], …quickSort(arrCopy.slice(pi+1, arrCopy.length))]
-//     }
-//     return arrCopy;
-//     }
+    const quickSort = (arr) => {
+    let arrCopy = […arr]
+    if(arrCopy.length > 1){
+    let pi = partitionArray(arrCopy);
+    arrCopy = […quickSort(arrCopy.slice(0, pi)), arrCopy[pi], …quickSort(arrCopy.slice(pi+1, arrCopy.length))]
+    }
+    return arrCopy;
+    }
 
 // function quickSort(arr){
 //     if(arr.length <= 1){

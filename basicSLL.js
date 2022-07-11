@@ -2,6 +2,7 @@ class Node {
     constructor(value) {
         this.value = value;
         this.next = null;
+        this.child = null;
     }
 }
 class SinglyLinkedList {
@@ -11,6 +12,9 @@ class SinglyLinkedList {
     isEmpty() {
         return this.head === null;
     }
+
+
+    
 
     insertAtBack(data) {
         const newBack = new Node(data);
@@ -49,27 +53,26 @@ class SinglyLinkedList {
         return this
     }
 
-    moveMinToBack(){
+    moveMaxToBack(){
         if(!this.head){
             console.log("this list is empty")
             return this
         }
         var runner = this.head
-        let nBeforeMin = null
-        let nAfterMin = null
-        let minNode = this.head
-
+        let nBeforeMax = null
+        let nAfterMax = null
+        let maxNode = this.head
         while(runner.next){
-            if(runner.next.value < minNode.value){
-                minNode = runner.next
-                nBeforeMin = runner
-                nAfterMin = runner.next.next
+            if(runner.next.value > maxNode.value){
+                maxNode = runner.next
+                nBeforeMax = runner
+                nAfterMax = runner.next.next
             }
             runner = runner.next
         }
-        runner.next = minNode
-        minNode.next = null
-        nBeforeMin.next = nAfterMin
+        runner.next = maxNode
+        maxNode.next = null
+        nBeforeMax.next = nAfterMax
         return this
     }
 
@@ -78,7 +81,9 @@ class SinglyLinkedList {
             console.log("there is nothing here")
             return this
         }
+        var temp = this.head
         this.head = this.head.next
+        temp.next = null
         return this
     }
 
@@ -176,6 +181,24 @@ class SinglyLinkedList {
         else this.insertAtFront(newVal)
         return this
     }
+    maxToBack() {
+        let runner = this.head
+        let max = this.head
+        let bm
+        let am
+        while (runner.next) {
+            if (runner.next.value > max.value) {
+                max = runner.next
+                bm = runner
+                am = runner.next.next
+            }
+            runner = runner.next
+        }
+        runner.next = max
+        bm.next = am
+        runner.next.next = null
+        return this
+    }
 
     removeSecondToLast(){
         if(!this.head) return this
@@ -220,6 +243,11 @@ class SinglyLinkedList {
 }
 
 var newList = new SinglyLinkedList();
-newList.insertAtFront(-45).insertAtFront(54).insertAtFront(4).insertAtFront(5).printSll().removeNegatives()
+newList.insertAtFront(-45).insertAtFront(54).insertAtFront(4).insertAtFront(5).printSll()
 console.log("+++++++++++++++++++++++++++++++")
+newList.moveMaxToBack().moveMinToFront()
+newList.appendValue(5,64,false).prependValue(5,43)
+
 newList.printSll()
+
+

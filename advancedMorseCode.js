@@ -94,7 +94,6 @@ const decodeBits = function (bits) {
                     output += " "
                 }
                 if(value > (averageOf0 + 1)){
-                    
                     output += "  "
                 }
             }

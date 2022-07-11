@@ -61,7 +61,7 @@ class SLLPriority{
         console.log(output);
     }
     
-    function maxToBack(head) {
+    maxToBack(head) {
       if (head === null || head.next === null) {
         return head;
       }

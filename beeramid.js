@@ -24,3 +24,24 @@ function beeramid(referral,beerPrice){
     return pyramidLevels
 }
 console.log(beeramid(1500,2))
+
+
+function fibonacci(num) {
+    if(num ==0){
+        return 0
+    }
+    if(num <2) {
+        return num;
+    }
+    else {
+        return + fibonacci(num-1)+ fibonacci(num - 2)   ;
+    }
+}
+
+console.log(fibonacci(9))
+
+function GCF(a, b,sc=0) {
+    if ( ! b) return a;
+    return GCF(b, a % b,sc);
+};
+console.log(gcd(123, 1000));
